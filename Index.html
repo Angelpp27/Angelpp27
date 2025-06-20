@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Visita Registrada</title>
+</head>
+<body>
+  <h1>Bienvenido</h1>
+  <p>Tu IP ha sido registrada.</p>
+  <p>Ciudad: <span id="ciudad">Cargando...</span></p>
+  <p>País: <span id="pais">Cargando...</span></p>
+
+  <script>
+    fetch('/api/ip')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('ciudad').textContent = data.ciudad || 'Desconocido';
+        document.getElementById('pais').textContent = data.pais || 'Desconocido';
+      });
+  </script>
+</body>
+</html>
